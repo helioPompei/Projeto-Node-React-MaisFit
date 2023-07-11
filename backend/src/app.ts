@@ -1,11 +1,16 @@
+import jwt from "@fastify/jwt";
 import fastify from "fastify";
-import { usersRoutes } from "./controllers/users/routes";
 import { ZodError } from "zod";
+import { usersRoutes } from "./controllers/users/routes";
+import { env } from "./env";
 
 export const app = fastify();
 
 // All Routes
 app.register(usersRoutes);
+
+// JWT
+app.register(jwt, { secret: env.SECRET });
 
 // Error Handler
 app.setErrorHandler((error, _, reply) => {
