@@ -1,12 +1,15 @@
 # App
 
-GymPass style app.
+Gym MaisFit app.
 
 ## RFs (Requisitos funcionais)
+
+### User
 
 - [x] Deve ser possível se cadastrar o usuário;
 - [x] Deve ser possível se autenticar o usuário;
 - [x] Deve ser possível obter o perfil de um usuário logado;
+- [x] Deve ser possível obter todos os nomes e ids de usuários;
 
 - [ ] Deve ser possível cadastrar a Ficha de treino de um usuário;
 - [ ] Deve ser possível obter a Ficha de treino de um usuário;

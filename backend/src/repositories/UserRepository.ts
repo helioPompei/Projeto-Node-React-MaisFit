@@ -33,4 +33,16 @@ export class UserRepository implements UserInterface {
 
     return user;
   }
+
+  // getFind user by Id
+  async getAllUsersProfiles() {
+    const users = await prisma.user.findMany({
+      select: {
+        id: true,
+        name: true,
+      },
+    });
+
+    return users;
+  }
 }
