@@ -22,12 +22,12 @@ export class RegisterService {
       throw new UserAlreadyExistsError();
     }
 
-    const password_hash = await hash(password, 6);
+    const passwordHash = await hash(password, 6);
 
     const user = this.userRepository.create({
       name,
       email,
-      password_hash,
+      passwordHash,
     });
 
     return user;

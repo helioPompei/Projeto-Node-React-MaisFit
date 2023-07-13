@@ -10,22 +10,83 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+enum Sex {
+  MALE
+  FEMALE
+  UNDEFINED
+}
+
 model User {
-  id            String   @id @default(uuid())
-  name          String
-  email         String   @unique
-  password_hash String
-  created_at    DateTime @default(now())
+  id           String    @id @default(uuid())
+  name         String
+  email        String    @unique
+  passwordHash String
+  sex          Sex       @default(UNDEFINED)
+  birthday     DateTime?
+  phone        String?
+  createdAt    DateTime  @default(now())
+
+  trainingSheets      TrainingSheet[]
+  physicalEvaluations PhysicalEvaluation[]
 
   @@map("users")
 }
 
-model training_sheet {
-  id            String   @id @default(uuid())
-  name          String
-  email         String
-  password_hash String
-  created_at    DateTime @default(now())
+model PhysicalEvaluation {
+  id             String   @id @default(uuid())
+  evaluationDate DateTime
+
+  height      Float
+  weight      Float
+  imc         Float
+  currentFat  Float
+  idealFat    Float
+  goal        String
+  observation String?
+
+  User   User   @relation(fields: [userId], references: [id])
+  userId String
+
+  muscleMeasurements MuscleMeasurement[]
+
+  @@map("physical_evaluations")
+}
+
+model MuscleMeasurement {
+  id          String @id @default(uuid())
+  muscleName  String
+  measurement Float
+
+  physicalEvaluation   PhysicalEvaluation @relation(fields: [physicalEvaluationId], references: [id])
+  physicalEvaluationId String
+
+  @@map("muscle_measurements")
+}
+
+model TrainingSheet {
+  id                String   @id @default(uuid())
+  title             String
+  createdAt         DateTime @default(now())
+  nextTrainingSheet DateTime
+
+  User   User   @relation(fields: [userId], references: [id])
+  userId String
+
+  exercices Exercice[]
 
   @@map("training_sheets")
+}
+
+model Exercice {
+  id           String @id @default(uuid())
+  exerciceName String
+  series       Int
+  repetition   String
+  time         String
+  load         Float?
+
+  trainingSheet   TrainingSheet @relation(fields: [TrainingSheetID], references: [id])
+  TrainingSheetID String
+
+  @@map("exercices")
 }

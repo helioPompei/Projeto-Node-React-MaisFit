@@ -1,6 +1,6 @@
 import { InvalidCredentials } from "@/controllers/errors/invalid-credentials-error";
 import { UserRepository } from "@/repositories/UserRepository";
-import { hash, compare } from "bcrypt";
+import { compare } from "bcrypt";
 
 interface AuthenticateServiceRequest {
   email: string;
@@ -21,7 +21,7 @@ export class AuthenticateService {
       throw new InvalidCredentials();
     }
 
-    const doesPasswordMatches = await compare(password, user.password_hash);
+    const doesPasswordMatches = await compare(password, user.passwordHash);
 
     if (!doesPasswordMatches) {
       throw new InvalidCredentials();

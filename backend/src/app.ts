@@ -6,11 +6,11 @@ import { env } from "./env";
 
 export const app = fastify();
 
-// All Routes
-app.register(usersRoutes);
-
 // JWT
 app.register(jwt, { secret: env.SECRET });
+
+// All Routes
+app.register(usersRoutes);
 
 // Error Handler
 app.setErrorHandler((error, _, reply) => {

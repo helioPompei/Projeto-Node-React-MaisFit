@@ -4,10 +4,16 @@ GymPass style app.
 
 ## RFs (Requisitos funcionais)
 
-- [x] Deve ser possível se cadastrar;
-- [x] Deve ser possível se autenticar;
-- [ ] Deve ser possível obter o perfil de um usuário logado;
+- [x] Deve ser possível se cadastrar o usuário;
+- [x] Deve ser possível se autenticar o usuário;
+- [x] Deve ser possível obter o perfil de um usuário logado;
+
+- [ ] Deve ser possível cadastrar a Ficha de treino de um usuário;
 - [ ] Deve ser possível obter a Ficha de treino de um usuário;
+- [ ] Deve ser possível atualizar a Ficha de treino de um usuário;
+
+- [ ] Deve ser possível cadastrar o exame fisico de um usuário;
+- [ ] Deve ser possível obter o exame fisico de um usuário;
 
 ## RNs (Regras de negócio)
 
@@ -42,7 +48,8 @@ GymPass style app.
 "scripts": {
 "start": "node build/server.js",
 "dev": "tsx watch src/server.ts",
-"build": "tsup src --out-dir build"
+"build": "tsup src --out-dir build",
+"test": "vitest run"
 }
 
 ## NPMRC
