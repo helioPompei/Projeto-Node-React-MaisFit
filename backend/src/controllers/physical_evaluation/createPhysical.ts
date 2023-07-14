@@ -1,5 +1,5 @@
 import { PhysicalEvaluationRepository } from "@/repositories/PhysicalEvaluationRepository";
-import { CreatePhysicalEvaluationService } from "@/services/physical_evaluation/createPhysicalEvaluationService";
+import { CreatePhysicalService } from "@/services/physical_evaluation/CreatePhysicalService";
 import { FastifyReply, FastifyRequest } from "fastify";
 import { z } from "zod";
 import { UserNotFound } from "../errors/user-not-found-error";
@@ -34,11 +34,11 @@ export const createPhysicalEvaluation = async (
 
   try {
     const physicalEvaluationRepository = new PhysicalEvaluationRepository();
-    const createPhysicalEvaluationService = new CreatePhysicalEvaluationService(
+    const createPhysicalService = new CreatePhysicalService(
       physicalEvaluationRepository
     );
 
-    await createPhysicalEvaluationService.execute({
+    await createPhysicalService.execute({
       evaluationDate,
       height,
       weight,

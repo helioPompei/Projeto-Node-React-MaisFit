@@ -1,14 +1,15 @@
 import { PhysicalEvaluationRepository } from "@/repositories/PhysicalEvaluationRepository";
-import { CreatePhysicalEvaluationService } from "@/services/physical_evaluation/createPhysicalEvaluationService";
+import { EditPhysicalService } from "@/services/physical_evaluation/EditPhysicalService";
 import { FastifyReply, FastifyRequest } from "fastify";
 import { z } from "zod";
 import { UserNotFound } from "../errors/user-not-found-error";
 
-export const createPhysicalEvaluation = async (
+export const editPhysicalEvaluation = async (
   request: FastifyRequest,
   reply: FastifyReply
 ) => {
   const createPhysicalEvaluationSchema = z.object({
+    id: z.string(),
     evaluationDate: z.string().pipe(z.coerce.date()),
     height: z.number().positive(),
     weight: z.number().positive(),
@@ -21,6 +22,7 @@ export const createPhysicalEvaluation = async (
   });
 
   const {
+    id,
     evaluationDate,
     height,
     weight,
@@ -34,11 +36,12 @@ export const createPhysicalEvaluation = async (
 
   try {
     const physicalEvaluationRepository = new PhysicalEvaluationRepository();
-    const createPhysicalEvaluationService = new CreatePhysicalEvaluationService(
+    const editPhysicalService = new EditPhysicalService(
       physicalEvaluationRepository
     );
 
-    await createPhysicalEvaluationService.execute({
+    await editPhysicalService.execute({
+      id,
       evaluationDate,
       height,
       weight,
@@ -46,7 +49,7 @@ export const createPhysicalEvaluation = async (
       currentFat,
       idealFat,
       goal,
-      observation,
+      observation: observation ? observation : null,
       userId,
     });
   } catch (error) {

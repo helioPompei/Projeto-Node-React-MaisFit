@@ -1,5 +1,5 @@
 import { prisma } from "@/utils/lib/prisma";
-import { Prisma } from "@prisma/client";
+import { PhysicalEvaluation, Prisma } from "@prisma/client";
 import { PhysicalEvaluationInterface } from "./Interfaces/PhysicalEvaluationInterface";
 
 export class PhysicalEvaluationRepository
@@ -7,8 +7,19 @@ export class PhysicalEvaluationRepository
 {
   // Create Physical Evaluation
   async create(data: Prisma.PhysicalEvaluationUncheckedCreateInput) {
-    // Physical evaluation create
     const physicalEvaluation = await prisma.physicalEvaluation.create({
+      data,
+    });
+
+    return physicalEvaluation;
+  }
+
+  // Edit Physical Evaluation
+  async edit(data: PhysicalEvaluation) {
+    const physicalEvaluation = await prisma.physicalEvaluation.update({
+      where: {
+        id: data.id,
+      },
       data,
     });
 

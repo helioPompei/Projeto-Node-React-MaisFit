@@ -5,7 +5,7 @@ interface GetUserProfileUseCaseRequest {
   userId: string;
 }
 
-export class ProfileService {
+export class GetProfileService {
   private userRepository;
 
   constructor(userRepository: UserRepository) {
