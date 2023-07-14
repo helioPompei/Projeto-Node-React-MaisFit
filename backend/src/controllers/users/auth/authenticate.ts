@@ -1,9 +1,9 @@
 import { UserRepository } from "@/repositories/UserRepository";
-import { AuthenticateService } from "@/services/users/AuthenticateService";
+import { AuthenticateService } from "@/services/users/auth/AuthenticateService";
 import { FastifyReply, FastifyRequest } from "fastify";
 import { z } from "zod";
 
-import { InvalidCredentials } from "../errors/invalid-credentials-error";
+import { InvalidCredentials } from "../../errors/invalid-credentials-error";
 
 export const authenticate = async (
   request: FastifyRequest,

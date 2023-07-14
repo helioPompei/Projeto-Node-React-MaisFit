@@ -1,4 +1,4 @@
-import { env } from "@/env";
+import { env } from "@/utils/env";
 import { PrismaClient } from "@prisma/client";
 
 // Config to use logs if it's on dev environment 

@@ -1,8 +1,9 @@
 import jwt from "@fastify/jwt";
 import fastify from "fastify";
 import { ZodError } from "zod";
-import { usersRoutes } from "./controllers/users/routes";
-import { env } from "./env";
+import { physicalEvaluationRoutes } from "./routes/physicalEvaluation.routes";
+import { usersRoutes } from "./routes/users.routes";
+import { env } from "./utils/env";
 
 export const app = fastify();
 
@@ -10,7 +11,8 @@ export const app = fastify();
 app.register(jwt, { secret: env.SECRET });
 
 // All Routes
-app.register(usersRoutes);
+app.register(usersRoutes, { prefix: "/user" });
+app.register(physicalEvaluationRoutes, { prefix: "/physical" });
 
 // Error Handler
 app.setErrorHandler((error, _, reply) => {

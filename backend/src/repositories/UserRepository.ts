@@ -1,4 +1,4 @@
-import { prisma } from "@/lib/prisma";
+import { prisma } from "@/utils/lib/prisma";
 import { Prisma } from "@prisma/client";
 import { UserInterface } from "./Interfaces/UserInterface";
 

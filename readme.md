@@ -11,12 +11,29 @@ Gym MaisFit app.
 - [x] Deve ser possível obter o perfil de um usuário logado;
 - [x] Deve ser possível obter todos os nomes e ids de usuários;
 
+### Avaliação Fisica
+
+- [x] Deve ser possível cadastrar a Avaliação Fisica de um usuário;
+- [ ] Deve ser possível obter as Avaliações Fisicas de um usuário;
+- [ ] Deve ser possível atualizar a Avaliação Fisica de um usuário;
+
+### Medidas musculares
+
+- [ ] Deve ser possível cadastrar Medidas musculares de uma Avaliação Fisica de um usuário;
+- [ ] Deve ser possível obter Medidas musculares de uma Avaliação Fisica de um usuário;
+- [ ] Deve ser possível excluir Medidas musculares de uma Avaliação Fisica de um usuário;
+
+### Fichas de treino
+
 - [ ] Deve ser possível cadastrar a Ficha de treino de um usuário;
-- [ ] Deve ser possível obter a Ficha de treino de um usuário;
+- [ ] Deve ser possível obter as Fichas de treino de um usuário;
 - [ ] Deve ser possível atualizar a Ficha de treino de um usuário;
 
-- [ ] Deve ser possível cadastrar o exame fisico de um usuário;
-- [ ] Deve ser possível obter o exame fisico de um usuário;
+### Exercicios
+
+- [ ] Deve ser possível cadastrar exercicios de uma ficha de um usuário;
+- [ ] Deve ser possível obter exercicios de uma ficha de um usuário;
+- [ ] Deve ser possível excluir exercicios de uma ficha de um usuário;
 
 ## RNs (Regras de negócio)
 

@@ -2,7 +2,7 @@ import { UserRepository } from "@/repositories/UserRepository";
 import { ProfileService } from "@/services/users/profileService";
 import { FastifyReply, FastifyRequest } from "fastify";
 
-export const profile = async (request: FastifyRequest, reply: FastifyReply) => {
+export const getProfile = async (request: FastifyRequest, reply: FastifyReply) => {
   const userRepository = new UserRepository();
   const profileService = new ProfileService(userRepository);
 

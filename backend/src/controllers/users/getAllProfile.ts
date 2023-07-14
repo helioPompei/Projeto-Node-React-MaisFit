@@ -2,7 +2,7 @@ import { UserRepository } from "@/repositories/UserRepository";
 import { GetAllUsersProfiles } from "@/services/users/GetAllProfileService";
 import { FastifyReply, FastifyRequest } from "fastify";
 
-export const allProfile = async (
+export const getAllProfile = async (
   request: FastifyRequest,
   reply: FastifyReply
 ) => {
@@ -10,9 +10,6 @@ export const allProfile = async (
   const getAllUsersProfiles = new GetAllUsersProfiles(userRepository);
 
   const { users } = await getAllUsersProfiles.execute();
-
-  console.log(typeof users);
-  console.log(users);
 
   return reply.status(200).send({
     users,

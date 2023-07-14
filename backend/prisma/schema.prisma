@@ -34,8 +34,8 @@ model User {
 
 model PhysicalEvaluation {
   id             String   @id @default(uuid())
+  
   evaluationDate DateTime
-
   height      Float
   weight      Float
   imc         Float
