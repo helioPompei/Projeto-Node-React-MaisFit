@@ -14,12 +14,12 @@ Gym MaisFit app.
 ### Avaliação Fisica
 
 - [x] Deve ser possível cadastrar a Avaliação Fisica de um usuário;
+- [x] Deve ser possível atualizar a Avaliação Fisica de um usuário;
 - [ ] Deve ser possível obter as Avaliações Fisicas de um usuário;
-- [ ] Deve ser possível atualizar a Avaliação Fisica de um usuário;
 
 ### Medidas musculares
 
-- [ ] Deve ser possível cadastrar Medidas musculares de uma Avaliação Fisica de um usuário;
+- [x] Deve ser possível cadastrar Medidas musculares de uma Avaliação Fisica de um usuário;
 - [ ] Deve ser possível obter Medidas musculares de uma Avaliação Fisica de um usuário;
 - [ ] Deve ser possível excluir Medidas musculares de uma Avaliação Fisica de um usuário;
 
