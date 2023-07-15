@@ -1,5 +1,5 @@
-import { PhysicalEvaluationRepository } from "@/repositories/PhysicalEvaluationRepository";
-import { CreatePhysicalService } from "@/services/physical_evaluation/CreatePhysicalService";
+import { PhysicalRepository } from "@/repositories/PhysicalRepository";
+import { CreatePhysicalService } from "@/services/physical/CreatePhysicalService";
 import { FastifyReply, FastifyRequest } from "fastify";
 import { z } from "zod";
 import { UserNotFound } from "../errors/user-not-found-error";
@@ -33,10 +33,8 @@ export const createPhysicalEvaluation = async (
   } = createPhysicalEvaluationSchema.parse(request.body);
 
   try {
-    const physicalEvaluationRepository = new PhysicalEvaluationRepository();
-    const createPhysicalService = new CreatePhysicalService(
-      physicalEvaluationRepository
-    );
+    const physicalRepository = new PhysicalRepository();
+    const createPhysicalService = new CreatePhysicalService(physicalRepository);
 
     await createPhysicalService.execute({
       evaluationDate,

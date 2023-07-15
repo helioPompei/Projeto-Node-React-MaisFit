@@ -1,8 +1,7 @@
 import { UserNotFound } from "@/controllers/errors/user-not-found-error";
-import { PhysicalEvaluationRepository } from "@/repositories/PhysicalEvaluationRepository";
+import { PhysicalRepository } from "@/repositories/PhysicalRepository";
 
-interface EditPhysicalRequest {
-  id: string;
+interface CreatePhysicalRequest {
   evaluationDate: Date;
   height: number;
   weight: number;
@@ -10,20 +9,18 @@ interface EditPhysicalRequest {
   currentFat: number;
   idealFat: number;
   goal: string;
-  observation: string | null;
+  observation?: string;
   userId: string;
 }
 
-// Class Edit Physical
-export class EditPhysicalService {
+export class CreatePhysicalService {
   private physicalRepository;
 
-  constructor(physicalRepository: PhysicalEvaluationRepository) {
+  constructor(physicalRepository: PhysicalRepository) {
     this.physicalRepository = physicalRepository;
   }
 
   async execute({
-    id,
     evaluationDate,
     height,
     weight,
@@ -33,15 +30,14 @@ export class EditPhysicalService {
     goal,
     observation,
     userId,
-  }: EditPhysicalRequest) {
+  }: CreatePhysicalRequest) {
     const user = await this.physicalRepository.findUserById(userId);
 
     if (!user) {
       throw new UserNotFound();
     }
 
-    const physicalEvaluation = await this.physicalRepository.edit({
-      id,
+    const physicalEvaluation = await this.physicalRepository.create({
       evaluationDate,
       height,
       weight,

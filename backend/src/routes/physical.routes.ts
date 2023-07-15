@@ -1,5 +1,5 @@
-import { createPhysicalEvaluation } from "@/controllers/physical_evaluation/createPhysical";
-import { editPhysicalEvaluation } from "@/controllers/physical_evaluation/editPhysical";
+import { createPhysicalEvaluation } from "@/controllers/physical/createPhysical";
+import { editPhysicalEvaluation } from "@/controllers/physical/editPhysical";
 import { verifyJWT } from "@/middlewares/verify-jwt";
 import { FastifyInstance } from "fastify";
 

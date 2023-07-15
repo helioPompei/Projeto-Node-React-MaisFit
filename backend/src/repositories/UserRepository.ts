@@ -3,7 +3,7 @@ import { Prisma } from "@prisma/client";
 import { UserInterface } from "./Interfaces/UserInterface";
 
 export class UserRepository implements UserInterface {
-  // Create user
+  // Create User
   async create({ name, email, passwordHash }: Prisma.UserCreateInput) {
     const user = await prisma.user.create({
       data: {
@@ -16,7 +16,7 @@ export class UserRepository implements UserInterface {
     return user;
   }
 
-  // Find user by E-mail
+  // Find User by E-mail
   async findUserByEmail(email: string) {
     const user = await prisma.user.findUnique({
       where: { email },
@@ -25,7 +25,7 @@ export class UserRepository implements UserInterface {
     return user;
   }
 
-  // Find user by Id
+  // Find User by Id
   async findUserById(id: string) {
     const user = await prisma.user.findUnique({
       where: { id },
@@ -34,7 +34,7 @@ export class UserRepository implements UserInterface {
     return user;
   }
 
-  // getFind user by Id
+  // Get All Users
   async getAllUsersProfiles() {
     const users = await prisma.user.findMany({
       select: {

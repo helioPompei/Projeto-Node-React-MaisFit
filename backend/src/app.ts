@@ -1,7 +1,8 @@
 import jwt from "@fastify/jwt";
 import fastify from "fastify";
 import { ZodError } from "zod";
-import { physicalEvaluationRoutes } from "./routes/physicalEvaluation.routes";
+import { muscleMeasurementRoutes } from "./routes/muscle.routes";
+import { physicalEvaluationRoutes } from "./routes/physical.routes";
 import { usersRoutes } from "./routes/users.routes";
 import { env } from "./utils/env";
 
@@ -13,6 +14,7 @@ app.register(jwt, { secret: env.SECRET });
 // All Routes
 app.register(usersRoutes, { prefix: "/user" });
 app.register(physicalEvaluationRoutes, { prefix: "/physical" });
+app.register(muscleMeasurementRoutes, { prefix: "/muscle" });
 
 // Error Handler
 app.setErrorHandler((error, _, reply) => {

@@ -1,10 +1,8 @@
 import { prisma } from "@/utils/lib/prisma";
 import { PhysicalEvaluation, Prisma } from "@prisma/client";
-import { PhysicalEvaluationInterface } from "./Interfaces/PhysicalEvaluationInterface";
+import { PhysicalInterface } from "./Interfaces/PhysicalInterface";
 
-export class PhysicalEvaluationRepository
-  implements PhysicalEvaluationInterface
-{
+export class PhysicalRepository implements PhysicalInterface {
   // Create Physical Evaluation
   async create(data: Prisma.PhysicalEvaluationUncheckedCreateInput) {
     const physicalEvaluation = await prisma.physicalEvaluation.create({
@@ -26,7 +24,7 @@ export class PhysicalEvaluationRepository
     return physicalEvaluation;
   }
 
-  // Find user by Id
+  // Find User by Id
   async findUserById(id: string) {
     const user = await prisma.user.findUnique({
       where: { id },

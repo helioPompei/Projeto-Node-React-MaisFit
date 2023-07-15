@@ -1,6 +1,6 @@
-import { Prisma, PhysicalEvaluation, User } from "@prisma/client";
+import { PhysicalEvaluation, Prisma, User } from "@prisma/client";
 
-export interface PhysicalEvaluationInterface {
+export interface PhysicalInterface {
   create(
     data: Prisma.PhysicalEvaluationUncheckedCreateInput
   ): Promise<PhysicalEvaluation>;
