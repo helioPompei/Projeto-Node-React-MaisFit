@@ -4,12 +4,10 @@ import { FastifyReply, FastifyRequest } from "fastify";
 import { z } from "zod";
 import { ResourceNotFoundError } from "../errors/resource-not-found-error";
 
-// Function Create Muscle
 export const createMuscle = async (
   request: FastifyRequest,
   reply: FastifyReply
 ) => {
-  // Zod Schema
   const createMuscleSchema = z.object({
     muscleName: z.string(),
     measurement: z.number().positive(),

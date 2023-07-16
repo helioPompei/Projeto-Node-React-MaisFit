@@ -24,6 +24,13 @@ export class PhysicalRepository implements PhysicalInterface {
     return physicalEvaluation;
   }
 
+  // Find Every Physical in the Application
+  async findEveryRepositoy() {
+    const physicals = await prisma.physicalEvaluation.findMany();
+
+    return physicals;
+  }
+
   // Find User by Id
   async findUserById(id: string) {
     const user = await prisma.user.findUnique({

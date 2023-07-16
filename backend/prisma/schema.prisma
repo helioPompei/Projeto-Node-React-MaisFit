@@ -34,15 +34,14 @@ model User {
 
 model PhysicalEvaluation {
   id             String   @id @default(uuid())
-  
   evaluationDate DateTime
-  height      Float
-  weight      Float
-  imc         Float
-  currentFat  Float
-  idealFat    Float
-  goal        String
-  observation String?
+  height         Float
+  weight         Float
+  imc            Float
+  currentFat     Float
+  idealFat       Float
+  goal           String
+  observation    String?
 
   User   User   @relation(fields: [userId], references: [id])
   userId String
