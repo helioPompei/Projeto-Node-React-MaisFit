@@ -1,6 +1,7 @@
 import { prisma } from "@/utils/lib/prisma";
 import { PhysicalEvaluation, Prisma } from "@prisma/client";
 import { PhysicalInterface } from "./Interfaces/PhysicalInterface";
+import { GetResult } from "@prisma/client/runtime";
 
 export class PhysicalRepository implements PhysicalInterface {
   // Create Physical Evaluation
@@ -24,9 +25,23 @@ export class PhysicalRepository implements PhysicalInterface {
     return physicalEvaluation;
   }
 
-  // Find Every Physical in the Application
-  async findEveryRepositoy() {
+  // Find All Physical in the Application
+  async findAllPhysicalsInApp() {
     const physicals = await prisma.physicalEvaluation.findMany();
+
+    return physicals;
+  }
+
+  // Find All Physical By UserId
+  async findAllPhysicalsByUserId(id: string) {
+    const physicals = await prisma.physicalEvaluation.findMany({
+      where: {
+        userId: id,
+      },
+      include: {
+        muscleMeasurements: true,
+      },
+    });
 
     return physicals;
   }

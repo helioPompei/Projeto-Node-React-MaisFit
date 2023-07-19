@@ -1,17 +1,17 @@
 import { PhysicalRepository } from "@/repositories/PhysicalRepository";
-import { GetEveryPhysicalService } from "@/services/physical/GetEveryPhysicalService";
+import { GetAllPhysicalsInAppService } from "@/services/physical/GetAllPhysicalsInAppService";
 import { FastifyReply, FastifyRequest } from "fastify";
 
-export const getEveryPhysical = async (
+export const getAllPhysicalsInApp = async (
   request: FastifyRequest,
   reply: FastifyReply
 ) => {
   const physicalRepository = new PhysicalRepository();
-  const getEveryPhysicalService = new GetEveryPhysicalService(
+  const getAllPhysicalsInAppService = new GetAllPhysicalsInAppService(
     physicalRepository
   );
 
-  const { physicals } = await getEveryPhysicalService.execute();
+  const { physicals } = await getAllPhysicalsInAppService.execute();
 
   return reply.status(200).send({
     physicals,

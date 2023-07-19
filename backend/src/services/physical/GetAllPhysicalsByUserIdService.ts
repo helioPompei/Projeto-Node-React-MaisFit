@@ -1,10 +1,12 @@
 import { PhysicalRepository } from "@/repositories/PhysicalRepository";
 
-export class GetEveryPhysicalService {
+export class GetAllPhysicalsByUserIdService {
   constructor(private physicalRepository: PhysicalRepository) {}
 
-  async execute() {
-    const physicals = await this.physicalRepository.findEveryRepositoy();
+  async execute(id: string) {
+    const physicals = await this.physicalRepository.findAllPhysicalsByUserId(
+      id
+    );
 
     return { physicals };
   }

@@ -1,3 +1,4 @@
+import fastifyCookie from "@fastify/cookie";
 import jwt from "@fastify/jwt";
 import fastify from "fastify";
 import { ZodError } from "zod";
@@ -9,7 +10,19 @@ import { env } from "./utils/env";
 export const app = fastify();
 
 // JWT
-app.register(jwt, { secret: env.SECRET });
+app.register(jwt, {
+  secret: env.SECRET,
+  cookie: {
+    cookieName: "refreshToken",
+    signed: false, // Not Hashed
+  },
+  sign: {
+    expiresIn: "10m",
+  },
+});
+
+// Cookie
+app.register(fastifyCookie);
 
 // All Routes
 app.register(usersRoutes, { prefix: "/user" });

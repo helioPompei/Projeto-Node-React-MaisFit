@@ -2,7 +2,7 @@ import { MuscleReposity } from "@/repositories/MuscleRepository";
 import { CreateMuscleService } from "@/services/muscle_measurement/CreateMuscle";
 import { FastifyReply, FastifyRequest } from "fastify";
 import { z } from "zod";
-import { ResourceNotFoundError } from "../errors/resource-not-found-error";
+import { ResourceNotFoundError } from "../../errors/resource-not-found-error";
 
 export const createMuscle = async (
   request: FastifyRequest,

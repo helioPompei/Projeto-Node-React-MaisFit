@@ -15,12 +15,13 @@ Gym MaisFit app.
 
 - [x] Deve ser possível cadastrar a Avaliação Fisica de um usuário;
 - [x] Deve ser possível atualizar a Avaliação Fisica de um usuário;
-- [ ] Deve ser possível obter as Avaliações Fisicas de um usuário;
+- [x] Deve ser possível obter Todas as Avaliações Fisicas de todos os usuários;
+- [x] Deve ser possível obter as Avaliações Fisicas de um usuário;
 
 ### Medidas musculares
 
 - [x] Deve ser possível cadastrar Medidas musculares de uma Avaliação Fisica de um usuário;
-- [ ] Deve ser possível obter Medidas musculares de uma Avaliação Fisica de um usuário;
+- [x] Deve ser possível obter Medidas musculares de uma Avaliação Fisica de um usuário;
 - [ ] Deve ser possível excluir Medidas musculares de uma Avaliação Fisica de um usuário;
 
 ### Fichas de treino
@@ -47,12 +48,25 @@ Gym MaisFit app.
 
 # Notes
 
+## Front-End
+
+## Prod dependencies
+
+- npm i react-router-dom
+- npm i axios
+- npm i styled-components
+- npm i react-redux
+- npm i @reduxjs/toolkit
+
+## Back-End
+
 ## Dev dependencies
 
 - npm init -y
 - npm i typescript @types/node tsx tsup -D
 - npx tsc --init
 - npm i prisma -D
+- npm i @fastify/cookie
 
 ## Prod dependencies
 

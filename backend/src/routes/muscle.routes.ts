@@ -1,4 +1,4 @@
-import { createMuscle } from "@/controllers/muscle/createMuscle";
+import { createMuscle } from "@/controllers/physical/muscle/createMuscle";
 import { verifyJWT } from "@/middlewares/verify-jwt";
 import { FastifyInstance } from "fastify";
 
