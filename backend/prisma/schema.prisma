@@ -16,11 +16,17 @@ enum Sex {
   UNDEFINED
 }
 
+enum Role {
+  ADMIN
+  MEMBER
+}
+
 model User {
   id           String    @id @default(uuid())
   name         String
   email        String    @unique
   passwordHash String
+  role         Role      @default(MEMBER)
   sex          Sex       @default(UNDEFINED)
   birthday     DateTime?
   phone        String?
