@@ -1,4 +1,5 @@
 import fastifyCookie from "@fastify/cookie";
+import cors from "@fastify/cors";
 import jwt from "@fastify/jwt";
 import fastify from "fastify";
 import { ZodError } from "zod";
@@ -8,6 +9,12 @@ import { usersRoutes } from "./routes/users.routes";
 import { env } from "./utils/env";
 
 export const app = fastify();
+
+// Solve cors
+app.register(cors, {
+  origin: true,
+  credentials: true,
+});
 
 // JWT
 app.register(jwt, {

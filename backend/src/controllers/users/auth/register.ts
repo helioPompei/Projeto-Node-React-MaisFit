@@ -1,6 +1,6 @@
 import { UserRepository } from "@/repositories/UserRepository";
 import { RegisterService } from "@/services/users/auth/RegisterService";
-import { FastifyRequest, FastifyReply } from "fastify";
+import { FastifyReply, FastifyRequest } from "fastify";
 import { z } from "zod";
 import { UserAlreadyExistsError } from "../../errors/user-already-exists-error";
 

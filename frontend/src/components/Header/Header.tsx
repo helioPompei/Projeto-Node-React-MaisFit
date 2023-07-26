@@ -8,7 +8,7 @@ export const Header = () => {
       <img src={logo} alt="Logo Mais Fit Academia" />
 
       <S.NavContainer>
-        <NavLink to="/home">Home</NavLink>
+        <NavLink to="/">Home</NavLink>
         <NavLink to="/about">Sobre</NavLink>
         <NavLink to="/prices">Preços</NavLink>
       </S.NavContainer>

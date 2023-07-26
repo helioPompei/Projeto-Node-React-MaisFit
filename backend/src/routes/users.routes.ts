@@ -7,7 +7,7 @@ import { getAllProfile } from "../controllers/users/getAllProfile";
 import { getProfile } from "../controllers/users/getProfile";
 
 export async function usersRoutes(app: FastifyInstance) {
-  app.post("/users", register);
+  app.post("/register", register);
   app.post("/login", authenticate);
 
   app.patch("/token/refresh", refresh);

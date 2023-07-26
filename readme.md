@@ -57,6 +57,10 @@ Gym MaisFit app.
 - npm i styled-components
 - npm i react-redux
 - npm i @reduxjs/toolkit
+- npm i react-hook-form
+- npm i zod
+- npm i @hookform/resolvers
+- npm i --save react-toastify
 
 ## Back-End
 
@@ -67,13 +71,18 @@ Gym MaisFit app.
 - npx tsc --init
 - npm i prisma -D
 - npm i @fastify/cookie
+- npm i @fastify/cors
 
 ## Prod dependencies
 
 - npm i fastify
 - npm i dotenv
 - npm i zod
-- npx prisma init / npx prisma generate / npx prisma migrate dev / npx prisma studio
+- npx prisma init
+  / npx prisma generate
+  / npx prisma migrate dev
+  / npx prisma studio
+  / npx prisma migrate dev --name init
 - npm i @prisma/client
 - npm i jsonwebtoken
 
