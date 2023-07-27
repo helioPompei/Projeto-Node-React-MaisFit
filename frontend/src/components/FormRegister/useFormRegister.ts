@@ -1,8 +1,9 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
+import { IRegisterData } from "../../@types/RegisterType";
 import { authService } from "../../services/authService";
-import { RegisterData, registerSchema } from "./RegisterSchema";
+import { registerSchema } from "./RegisterSchema";
 
 export const useFormRegister = () => {
   const {
@@ -10,9 +11,10 @@ export const useFormRegister = () => {
     handleSubmit,
     reset,
     formState: { errors, isSubmitting },
-  } = useForm<RegisterData>({ resolver: zodResolver(registerSchema) });
+  } = useForm<IRegisterData>({ resolver: zodResolver(registerSchema) });
 
-  const handleFormSubmit = async (data: RegisterData) => {
+  const handleFormSubmit = async (data: IRegisterData) => {
+    delete data.confirm;
     const response = await authService.register(data);
     if (response?.status === 201) {
       toast.success("Cadastrado com sucesso");

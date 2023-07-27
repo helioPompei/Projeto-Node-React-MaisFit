@@ -1,15 +1,9 @@
 import { AxiosError } from "axios";
+import { ILoginData } from "../@types/LoginType";
+import { IRegisterData } from "../@types/RegisterType";
 import { api } from "./api";
 
-interface IRegisterProps {
-  name: string;
-  email: string;
-  password: string;
-}
-
-type ILoginProps = Omit<IRegisterProps, "name">;
-
-const register = async (data: IRegisterProps) => {
+const register = async (data: Omit<IRegisterData, "confirm">) => {
   try {
     const response = await api.post("/user/register", data);
     return response;
@@ -18,14 +12,22 @@ const register = async (data: IRegisterProps) => {
       return error.response?.data;
     }
 
-    console.log("Handle: ", error);
+    console.log("Handle Register Error: ", error);
   }
 };
 
-const login = async (data: ILoginProps) => {
+const login = async (data: ILoginData) => {
   try {
-    await api.post("/user/login", data);
-  } catch (error) {}
+    const response = await api.post("/user/login", data);
+    console.log(response);
+    return response;
+  } catch (error) {
+    if (error instanceof AxiosError) {
+      return new Error(error.response?.data.message);
+    }
+
+    console.log("Handle Login Error: ", error);
+  }
 };
 
 export const authService = {

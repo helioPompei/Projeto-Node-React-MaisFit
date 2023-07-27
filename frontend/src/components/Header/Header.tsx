@@ -11,6 +11,7 @@ export const Header = () => {
         <NavLink to="/">Home</NavLink>
         <NavLink to="/about">Sobre</NavLink>
         <NavLink to="/prices">Preços</NavLink>
+        <NavLink to="/login">Login</NavLink>
       </S.NavContainer>
 
       <div>PAINEL</div>
