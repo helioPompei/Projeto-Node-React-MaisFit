@@ -1,7 +1,7 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { ILoginData } from "../../@types/LoginType";
-import { login } from "../../store/slices/auth";
+import { login } from "../../store/slices/authSlice/authAsyncThunks";
 import { useTypedDispatch } from "../../store/store";
 import { loginSchema } from "./LoginSchema";
 

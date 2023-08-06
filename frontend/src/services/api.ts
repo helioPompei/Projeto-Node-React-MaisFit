@@ -1,7 +1,7 @@
 import axios from "axios";
 import { getTokenLocalStorage } from "../utils/getTokenLocalStorage";
 import { store, useTypedDispatch } from "../store/store";
-import { setToken } from "../store/slices/auth";
+import { setToken } from "../store/slices/authSlice/auth";
 
 type tokenData = {
   token: string;

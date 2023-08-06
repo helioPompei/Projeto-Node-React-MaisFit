@@ -2,7 +2,7 @@ import { NavLink } from "react-router-dom";
 import logo from "../../assets/logo.png";
 import * as S from "./Header.style";
 import { useTypedDispatch, useTypedSelector } from "../../store/store";
-import { logout } from "../../store/slices/auth";
+import { logout } from "../../store/slices/authSlice/auth";
 import { authService } from "../../services/authService";
 
 export const Header = () => {
@@ -20,7 +20,7 @@ export const Header = () => {
 
         {!isLoggedIn && <NavLink to="/login">Login</NavLink>}
         {!isLoggedIn && <NavLink to="/register">Register</NavLink>}
-        {isLoggedIn && role === "ADMIN" && (
+        {isLoggedIn && role === "MEMBER" && (
           <NavLink to="/students">Alunos</NavLink>
         )}
 

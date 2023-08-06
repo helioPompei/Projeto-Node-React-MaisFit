@@ -1,9 +1,5 @@
 import jwtDecode from "jwt-decode";
-
-type DecodedToken = {
-  exp: number;
-  role: "MEMBER" | "ADMIN";
-};
+import { IDecodedToken } from "../@types/DecodedToken";
 
 type tokenData = {
   token: string;
@@ -16,8 +12,9 @@ export const getTokenLocalStorage = (): tokenData | null => {
 
   // Check if token exists
   if (token) {
-    const decodedToken = jwtDecode<DecodedToken>(token);
+    const decodedToken = jwtDecode<IDecodedToken>(token);
 
+    // Return token and role
     const tokenData: tokenData = {
       token: token,
       role: decodedToken.role,
@@ -28,13 +25,3 @@ export const getTokenLocalStorage = (): tokenData | null => {
 
   return null;
 };
-
-// export const decodeToken = (token: string) => {
-//   const decodedToken = jwtDecode<DecodedToken>(token);
-
-//   if (decodedToken.exp * 1000 > Date.now()) {
-//     return decodedToken;
-//   }
-
-//   return null;
-// };

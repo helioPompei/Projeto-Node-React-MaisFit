@@ -1,42 +1,16 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 import { toast } from "react-toastify";
-import { ILoginData } from "../../@types/LoginType";
-import { useTokenDecoded } from "../../hooks/useTokenDecoded";
-import { authService } from "../../services/authService";
-import { getTokenLocalStorage } from "../../utils/getTokenLocalStorage";
+import { getTokenLocalStorage } from "../../../utils/getTokenLocalStorage";
+import { login } from "./authAsyncThunks";
+import { IAuth } from "./authDataType";
 
 const tokenData = getTokenLocalStorage();
-
-interface IAuth {
-  isLoggedIn: boolean;
-  accessToken: string | null;
-  role: "MEMBER" | "ADMIN" | null;
-}
 
 const initialState: IAuth = {
   isLoggedIn: tokenData?.token ? true : false,
   accessToken: tokenData?.token ? tokenData?.token : null,
   role: tokenData?.role ? tokenData?.role : null,
 };
-
-export const login = createAsyncThunk(
-  "auth/login",
-  async (data: ILoginData, thunkAPI) => {
-    const response = await authService.login(data);
-
-    console.log(response);
-
-    if (response instanceof Error) {
-      return thunkAPI.rejectWithValue(response.toString());
-    }
-
-    localStorage.setItem("token", response?.data.token);
-
-    const { role } = useTokenDecoded(response?.data.token);
-
-    return { token: response?.data.token, role };
-  }
-);
 
 const authSlice = createSlice({
   name: "auth",

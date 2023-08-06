@@ -12,11 +12,11 @@ const AppRoutes = () => {
     <BrowserRouter>
       <Header />
       <Routes>
-        {/* <Route element={<ProtectedRoutes />}> */}
-        <Route path="/" element={<Home />} />
-        <Route path="/students" element={<Students />} />
-        <Route path="/usuario/:id" element={<Users />} />
-        {/* </Route> */}
+        <Route element={<ProtectedRoutes />}>
+          <Route path="/" element={<Home />} />
+          <Route path="/students" element={<Students />} />
+          <Route path="/usuario/:id" element={<Users />} />
+        </Route>
 
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
