@@ -12,6 +12,7 @@ export const refresh = async (request: FastifyRequest, reply: FastifyReply) => {
     {
       sign: {
         sub: request.user.sub,
+        expiresIn: "10s",
       },
     }
   );

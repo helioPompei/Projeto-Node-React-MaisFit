@@ -30,7 +30,12 @@ const login = async (data: ILoginData) => {
   }
 };
 
+const logout = () => {
+  localStorage.removeItem("token");
+};
+
 export const authService = {
   register,
   login,
+  logout,
 };

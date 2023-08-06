@@ -5,10 +5,12 @@ type Props = {};
 
 export const Home = () => {
   return (
-    <div style={{ height: "3000px" }}>
-      <div style={{ fontSize: "rem" }}>
-        <FormRegister />
-      </div>
-    </div>
+    <S.HomeContainer>
+      <S.Content>
+        <h1>
+          Desafie seu corpo <br /> VOCE VAI GOSTAR!
+        </h1>
+      </S.Content>
+    </S.HomeContainer>
   );
 };

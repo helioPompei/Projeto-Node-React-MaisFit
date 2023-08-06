@@ -1,18 +1,22 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { authService } from "../../services/authService";
-import { ILoginData } from "../../@types/LoginType";
 import { toast } from "react-toastify";
+import { ILoginData } from "../../@types/LoginType";
+import { useTokenDecoded } from "../../hooks/useTokenDecoded";
+import { authService } from "../../services/authService";
+import { getTokenLocalStorage } from "../../utils/getTokenLocalStorage";
 
-const acessToken = localStorage.getItem("user");
+const tokenData = getTokenLocalStorage();
 
 interface IAuth {
   isLoggedIn: boolean;
-  acessToken: string | null;
+  accessToken: string | null;
+  role: "MEMBER" | "ADMIN" | null;
 }
 
 const initialState: IAuth = {
-  isLoggedIn: acessToken ? true : false,
-  acessToken: acessToken ? JSON.parse(acessToken) : null,
+  isLoggedIn: tokenData?.token ? true : false,
+  accessToken: tokenData?.token ? tokenData?.token : null,
+  role: tokenData?.role ? tokenData?.role : null,
 };
 
 export const login = createAsyncThunk(
@@ -20,23 +24,40 @@ export const login = createAsyncThunk(
   async (data: ILoginData, thunkAPI) => {
     const response = await authService.login(data);
 
+    console.log(response);
+
     if (response instanceof Error) {
       return thunkAPI.rejectWithValue(response.toString());
     }
 
-    return response?.data.token;
+    localStorage.setItem("token", response?.data.token);
+
+    const { role } = useTokenDecoded(response?.data.token);
+
+    return { token: response?.data.token, role };
   }
 );
 
 const authSlice = createSlice({
   name: "auth",
   initialState,
-  reducers: {},
+  reducers: {
+    setToken: (state, action) => {
+      state.accessToken = action.payload;
+      state.isLoggedIn = true;
+    },
+    logout: (state) => {
+      state.accessToken = null;
+      state.isLoggedIn = false;
+      state.role = null;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(login.fulfilled, (state, action) => {
         state.isLoggedIn = true;
-        state.acessToken = action.payload;
+        state.accessToken = action.payload.token;
+        state.role = action.payload.role;
       })
       .addCase(login.rejected, (_, action) => {
         toast.error(action.payload as string);
@@ -45,3 +66,5 @@ const authSlice = createSlice({
 });
 
 export const auth = authSlice.reducer;
+
+export const { setToken, logout } = authSlice.actions;

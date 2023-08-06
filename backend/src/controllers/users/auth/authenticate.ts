@@ -32,6 +32,7 @@ export const authenticate = async (
       {
         sign: {
           sub: user.id,
+          expiresIn: "10s",
         },
       }
     );

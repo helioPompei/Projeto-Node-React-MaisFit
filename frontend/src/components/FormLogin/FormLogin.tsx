@@ -1,18 +1,10 @@
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useFormLogin } from "./useFormLogin";
-import { useTypedSelector } from "../../store/store";
-import { useEffect } from "react";
 
 export const FormLogin = () => {
   const { handleSubmit, register, handleFormSubmit, isSubmitting, errors } =
     useFormLogin();
-
-  const { error } = useTypedSelector((state) => state.auth);
-
-  useEffect(() => {
-
-  },[error])
 
   return (
     <>

@@ -1,37 +1,54 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { userService } from "../../services/userService";
+
+type Sex = "MALE" | "FEMALE" | "UNDEFINED";
 
 interface IUser {
-  token: string
-    name         String
-    email        String    @unique
-    role         Role      @default(MEMBER)
-    sex          Sex       @default(UNDEFINED)
-    birthday     DateTime?
-    phone        String?
+  id: string | null;
+  name: string | null;
+  email: string | null;
+  sex: Sex | null;
+  birthday: Date | null;
+  phone: string | null;
 
-  
-    // trainingSheets      TrainingSheet[]
-    // physicalEvaluations PhysicalEvaluation[]
-  
-
+  students: Array<{
+    id: string | null;
+    name: string | null;
+    email: string | null;
+    sex: Sex | null;
+    birthday: Date | null;
+    phone: string | null;
+  }> | null;
 }
 
 const initialState: IUser = {
-  evaluationDate: null,
-  height: 0,
-  weight: 0,
-  imc: 0,
-  currentFat: 0,
-  idealFat: 0,
-  goal: null,
-  observation: null,
-  userId: null,
+  id: null,
+  name: null,
+  email: null,
+  sex: null,
+  birthday: null,
+  phone: null,
+  students: null,
 };
 
+export const getMyProfile = createAsyncThunk(
+  "user/getMyProfile",
+  async (_, thunkAPI) => {
+    const response = await userService.getMyProfile();
+    console.log("redux", response);
+
+    if (response instanceof Error) {
+      return thunkAPI.rejectWithValue(response.toString());
+    }
+
+    //   return { token: response?.data.token, role };
+  }
+);
+
 const userSlice = createSlice({
-  name: "physical",
+  name: "user",
   initialState,
   reducers: {},
 });
 
-export const physical = physicalSlice.reducer;
+export const user = userSlice.reducer;

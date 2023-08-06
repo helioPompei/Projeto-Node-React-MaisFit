@@ -24,8 +24,8 @@ app.register(jwt, {
     signed: false, // Not Hashed
   },
   sign: {
-    expiresIn: "10m",
-  },
+    expiresIn: '10s'
+  }
 });
 
 // Cookie

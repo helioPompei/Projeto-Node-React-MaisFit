@@ -7,10 +7,11 @@ export const GlobalStyle = styled.createGlobalStyle`
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    font-family: "Montserrat", sans-serif;
   }
 
   html {
+    font-family: montserrat;
+
     font-size: 62.5%;
 
     ::-webkit-scrollbar {
