@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { getAllProfiles } from "../../store/slices/userSlice/user";
 import { useTypedDispatch, useTypedSelector } from "../../store/store";
+import { NavLink } from "react-router-dom";
 
 type Props = {};
 
@@ -17,7 +18,7 @@ export const ManageStudents = () => {
       <div style={{ fontSize: "rem" }}>
         {
           students && (students.map((student) => (
-            <div> <h1>{student.id}</h1> <h2>{student.name}</h2> </div>
+            <div> <h1>{student.id}  <NavLink to={`/student/${student.id}`}>go</NavLink></h1> <h2>{student.name} </h2> </div>
           )))
         }
       </div>

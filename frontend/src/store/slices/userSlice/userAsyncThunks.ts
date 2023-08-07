@@ -10,8 +10,20 @@ export const getMyProfile = createAsyncThunk(
     if (response instanceof Error) {
       return thunkAPI.rejectWithValue(response.toString());
     }
+  }
+);
 
-    //   return { token: response?.data.token, role };
+export const getOneProfile = createAsyncThunk(
+  "user/getOneProfile",
+  async (id: string, thunkAPI) => {
+    const response = await userService.getOneProfile(id);
+    console.log("Response one :", response.data);
+
+    if (response instanceof Error) {
+      return thunkAPI.rejectWithValue(response.toString());
+    }
+
+    return response.data;
   }
 );
 

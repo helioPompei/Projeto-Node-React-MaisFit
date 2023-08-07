@@ -14,6 +14,19 @@ const getMyProfile = async () => {
   }
 };
 
+const getOneProfile = async (id: string) => {
+  try {
+    const response = await apiPrivate.get(`/user/profile/${id}`);
+    return response;
+  } catch (error) {
+    if (error instanceof AxiosError) {
+      return error.response?.data;
+    }
+
+    console.log("Handle Get My Profile Error: ", error);
+  }
+};
+
 const getAllProfiles = async () => {
   try {
     const response = await apiPrivate.get("/user/profiles");
@@ -29,5 +42,6 @@ const getAllProfiles = async () => {
 
 export const userService = {
   getMyProfile,
+  getOneProfile,
   getAllProfiles,
 };

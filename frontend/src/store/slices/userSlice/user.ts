@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getAllProfiles } from "./userAsyncThunks";
+import { getAllProfiles, getOneProfile } from "./userAsyncThunks";
 import { IUser } from "./userDataType";
 
 const initialState: IUser = {
@@ -17,12 +17,20 @@ const userSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(getAllProfiles.fulfilled, (state, action) => {
-      state.students = action.payload.users;
-    });
+    builder
+      .addCase(getAllProfiles.fulfilled, (state, action) => {
+        state.students = action.payload.users;
+      })
+      .addCase(getOneProfile.fulfilled, (state, action) => {
+        state.students = state.students?.map((student) => {
+          if (student.id === action.payload.user.id) {
+            return (student = action.payload.user);
+          }
+          return student;
+        });
+      });
   },
 });
 
 export const user = userSlice.reducer;
 export { getAllProfiles };
-
