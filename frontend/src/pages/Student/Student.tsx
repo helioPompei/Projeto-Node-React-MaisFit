@@ -1,25 +1,24 @@
 import { useEffect } from "react";
 import { getAllProfiles } from "../../store/slices/userSlice/user";
 import { useTypedDispatch, useTypedSelector } from "../../store/store";
+import { useParams } from "react-router-dom";
+import { getMyProfile } from "../../store/slices/userSlice/userAsyncThunks";
 
 type Props = {};
 
-export const Students = () => {
+export const Student = () => {
+  const { id } = useParams();
   const dispatch = useTypedDispatch();
-  const { students } = useTypedSelector((state) => state.user);
+
 
   useEffect(() => {
-    dispatch(getAllProfiles());
+    dispatch(getMyProfile());
   }, []);
 
   return (
     <div style={{ height: "3000px" }}>
       <div style={{ fontSize: "rem" }}>
-        {
-          students && (students.map((student) => (
-            <div> <h1>{student.id}</h1> <h2>{student.name}</h2> </div>
-          )))
-        }
+        
       </div>
     </div>
   );

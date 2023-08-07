@@ -1,4 +1,5 @@
 import { refresh } from "@/controllers/users/auth/refresh";
+import { getOneProfile } from "@/controllers/users/getOneProfile";
 import { verifyJWT } from "@/middlewares/verify-jwt";
 import { FastifyInstance } from "fastify";
 import { authenticate } from "../controllers/users/auth/authenticate";
@@ -12,6 +13,9 @@ export async function usersRoutes(app: FastifyInstance) {
 
   app.patch("/token/refresh", refresh);
 
+  app.get("/profile/:id", { onRequest: [verifyJWT] }, getOneProfile);
+
   app.get("/profile", { onRequest: [verifyJWT] }, getProfile);
+
   app.get("/profiles", { onRequest: [verifyJWT] }, getAllProfile);
 }

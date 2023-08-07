@@ -21,7 +21,7 @@ export const Header = () => {
         {!isLoggedIn && <NavLink to="/login">Login</NavLink>}
         {!isLoggedIn && <NavLink to="/register">Register</NavLink>}
         {isLoggedIn && role === "MEMBER" && (
-          <NavLink to="/students">Alunos</NavLink>
+          <NavLink to="/managestudents">Alunos</NavLink>
         )}
 
         {isLoggedIn && (

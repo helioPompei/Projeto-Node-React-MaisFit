@@ -2,10 +2,10 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Header } from "../components/Header/Header";
 import { Home } from "../pages/Home/Home";
 import { Login } from "../pages/Login/Login";
+import { ManageStudents } from "../pages/ManageStudents/ManageStudents";
 import { Register } from "../pages/Register/Register";
-import { Users } from "../pages/Users/Users";
+import { Student } from "../pages/Student/Student";
 import { ProtectedRoutes } from "./ProtectedRoutes";
-import { Students } from "../pages/Students/Students";
 
 const AppRoutes = () => {
   return (
@@ -14,8 +14,8 @@ const AppRoutes = () => {
       <Routes>
         <Route element={<ProtectedRoutes />}>
           <Route path="/" element={<Home />} />
-          <Route path="/students" element={<Students />} />
-          <Route path="/usuario/:id" element={<Users />} />
+          <Route path="/managestudents" element={<ManageStudents />} />
+          <Route path="/student/:id" element={<Student />} />
         </Route>
 
         <Route path="/login" element={<Login />} />

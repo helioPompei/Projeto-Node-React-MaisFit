@@ -9,6 +9,7 @@ Gym MaisFit app.
 - [x] Deve ser possível se cadastrar o usuário;
 - [x] Deve ser possível se autenticar o usuário;
 - [x] Deve ser possível obter o perfil de um usuário logado;
+- [x] Deve ser possível obter o perfil de um usuário do sistema;
 - [x] Deve ser possível obter todos os nomes e ids de usuários;
 
 ### Avaliação Fisica
