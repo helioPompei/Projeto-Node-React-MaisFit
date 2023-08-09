@@ -2,7 +2,7 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import { userService } from "../../../services/userService";
 
 export const getMyProfile = createAsyncThunk(
-  "user/getMyProfile",
+  "user/getmyprofile",
   async (_, thunkAPI) => {
     const response = await userService.getMyProfile();
     console.log("redux", response);
@@ -14,7 +14,7 @@ export const getMyProfile = createAsyncThunk(
 );
 
 export const getOneProfile = createAsyncThunk(
-  "user/getOneProfile",
+  "user/getoneprofile",
   async (id: string, thunkAPI) => {
     const response = await userService.getOneProfile(id);
     console.log("Response one :", response.data);
@@ -28,7 +28,7 @@ export const getOneProfile = createAsyncThunk(
 );
 
 export const getAllProfiles = createAsyncThunk(
-  "user/getAllProfiles",
+  "user/getallprofiles",
   async (_, thunkAPI) => {
     const response = await userService.getAllProfiles();
 
